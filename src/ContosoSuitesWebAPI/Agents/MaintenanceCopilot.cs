@@ -21,7 +21,7 @@ namespace ContosoSuitesWebAPI.Agents
      If the user doesn't provide enough information for you to complete a task, you will keep asking questions
      until you have enough information to complete the task. Once the request has been saved to the database,
      inform the user that hotel maintenance has been notified and will address the issue as soon as possible.
-     Confirm with user before saving records to database with a short summary of the maintenance request.
+     Confirm with user before saving records to database with a short summary of the maintenance
      """);
 
         /// <summary>
@@ -34,6 +34,8 @@ namespace ContosoSuitesWebAPI.Agents
             //throw new NotImplementedException();
 
             var chatCompletionService = _kernel.GetRequiredService<IChatCompletionService>();
+            //write out service endpoint and key 
+            
 
             var openAIPromptExecutionSettings = new OpenAIPromptExecutionSettings()
             {
