@@ -57,16 +57,16 @@ builder.Services.AddSingleton<Kernel>((_) =>
     IKernelBuilder kernelBuilder = Kernel.CreateBuilder();
     kernelBuilder.AddAzureOpenAIChatCompletion(
         deploymentName: builder.Configuration["AzureOpenAI:DeploymentName"]!,
-        endpoint: "https://apim-fxp7scbtdouiq.azure-api.net/azure-openai-api",
-        apiKey: "f1e6cd0ec8f44be897b0cf16c3647e29"
+        endpoint: builder.Configuration["ApiManagement:Endpoint"]!,
+        apiKey: builder.Configuration["ApiManagement:ApiKey"]!
     );
     var databaseService = _.GetRequiredService<IDatabaseService>();
     kernelBuilder.Plugins.AddFromObject(databaseService);
     #pragma warning disable SKEXP0010
     kernelBuilder.AddAzureOpenAITextEmbeddingGeneration(
         deploymentName: builder.Configuration["AzureOpenAI:EmbeddingDeploymentName"]!,
-         endpoint: "https://apim-fxp7scbtdouiq.azure-api.net/azure-openai-api",
-         apiKey: "f1e6cd0ec8f44be897b0cf16c3647e29"
+         endpoint: builder.Configuration["ApiManagement:Endpoint"]!,
+         apiKey: builder.Configuration["ApiManagement:ApiKey"]!
     );
     #pragma warning restore SKEXP0010
 
